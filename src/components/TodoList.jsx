@@ -1,6 +1,6 @@
 import TodoItem from "./TodoItem";
 
-export default function TodoList({ tasks, onToggle, onDelete }) {
+export default function TodoList({ tasks, onToggle, onDelete, onUpdate }) {
   if (tasks.length === 0) {
     return <p className="text-gray-500 text-center">No tasks yet 🚀</p>;
   }
@@ -13,6 +13,7 @@ export default function TodoList({ tasks, onToggle, onDelete }) {
           task={task}
           onToggle={onToggle}
           onDelete={onDelete}
+          onUpdate={onUpdate}
         />
       ))}
     </ul>

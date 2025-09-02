@@ -29,12 +29,25 @@ export default function TodoPage() {
     setTasks(tasks.filter((task) => task.id !== id));
   };
 
+  const updateTask = (id, newText) => {
+    setTasks(
+      tasks.map((task) =>
+        task.id === id ? { ...task, text: newText } : task
+      )
+    );
+  };
+
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-6">
+    <div className="min-h-screen bg-gray-200 flex items-center justify-center p-6">
       <div className="w-full max-w-md bg-white shadow-lg rounded-2xl p-6">
         <h1 className="text-2xl font-bold mb-4 text-center">📝 To-Do List</h1>
         <TodoInput onAdd={addTask} />
-        <TodoList tasks={tasks} onToggle={toggleTask} onDelete={deleteTask} />
+        <TodoList
+          tasks={tasks}
+          onToggle={toggleTask}
+          onDelete={deleteTask}
+          onUpdate={updateTask}
+        />
       </div>
     </div>
   );
